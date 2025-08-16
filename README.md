@@ -1,29 +1,29 @@
-# 4-Bit Adder (Verilog)
+# 4-Bit Adder (Verilog - Vivado Project)
 
 ## 📘 Overview
 
-This project implements a **4-bit binary adder in Verilog HDL**. The circuit adds two 4-bit binary numbers and outputs their sum along with a carry-out bit. It demonstrates the use of **structural modeling** with full adders and is a basic building block for larger arithmetic circuits.
+This project implements a **4-bit binary adder in Verilog HDL**, built and simulated using **Xilinx Vivado**. The design takes two 4-bit inputs and produces a 4-bit sum with a carry-out. A testbench is included for functional verification.
 
 ---
 
 ## ⚡ Features
 
-* Written in **Verilog HDL**
-* Adds two 4-bit binary inputs (`A[3:0]`, `B[3:0]`)
-* Produces a **4-bit sum (`S[3:0]`)** and a **carry-out (`Cout`)**
-* Designed for simulation in tools like **ModelSim / Vivado / Quartus**
-* Source code is provided in a **compressed folder (`src.zip`)**
+* Implemented in **Verilog HDL**
+* Full Vivado project provided (`.xpr` file)
+* Includes **testbench and waveform configuration**
+* Ready for **simulation and synthesis** in Vivado
+* Project files are provided in a **compressed folder (`4_bit_adder.zip`)**
 
 ---
 
 ## 🛠️ Implementation
 
-The adder is built using **four full adders** connected in series:
+The design uses **four 1-bit full adders** connected in series:
 
-1. **FA0** → Adds `A0`, `B0`, and `Cin`
-2. **FA1** → Adds `A1`, `B1`, and carry from FA0
-3. **FA2** → Adds `A2`, `B2`, and carry from FA1
-4. **FA3** → Adds `A3`, `B3`, and carry from FA2
+* **FA0** → Adds `A0`, `B0`, `Cin`
+* **FA1** → Adds `A1`, `B1` + carry from FA0
+* **FA2** → Adds `A2`, `B2` + carry from FA1
+* **FA3** → Adds `A3`, `B3` + carry from FA2
 
 The final carry-out (`Cout`) indicates overflow.
 
@@ -31,23 +31,26 @@ The final carry-out (`Cout`) indicates overflow.
 
 ## 🖥️ How to Run
 
-1. **Download and extract the project**
+1. **Download and extract** the project folder:
 
-   * Locate the compressed source folder: `src.zip`
-   * Extract it to your working directory
+   ```bash
+   unzip 4_bit_adder.zip
+   cd 4_bit_adder
+   ```
 
-2. **Open in a Verilog simulator**
+2. **Open in Vivado**
 
-   * Import the `.v` files from the extracted folder into your preferred simulator (ModelSim, Vivado, Quartus, etc.)
+   * Launch Vivado
+   * Open the project: `File → Open Project → 4_bit_adder.xpr`
 
-3. **Compile and run the testbench**
+3. **Run Simulation**
 
-   * Compile `full_adder.v`, `adder4bit.v`, and `testbench.v` (if provided)
-   * Run simulation to verify the output
+   * In the Flow Navigator, select **Run Simulation → Run Behavioral Simulation**
+   * The waveform (`adder4bit_tb_behav.wcfg`) will show input/output signals
 
-4. **Check results**
+4. **Run Synthesis & Implementation (Optional)**
 
-   * The simulation waveform will display inputs (`A`, `B`) and outputs (`S`, `Cout`)
+   * Use **Run Synthesis** and **Generate Bitstream** if targeting FPGA
 
 ---
 
@@ -70,18 +73,13 @@ Output:
 ## 📂 Project Structure
 
 ```
-4-bit-adder/
-│── src.zip       # Compressed folder containing Verilog source files
-│── README.md     # Project documentation
-```
-
-Inside `src.zip`:
-
-```
-src/
-│── full_adder.v      # 1-bit full adder module
-│── adder4bit.v       # 4-bit adder module (structural)
-│── testbench.v       # Testbench for simulation
+4_bit_adder/
+│── 4_bit_adder.xpr             # Vivado project file
+│── adder4bit_tb_behav.wcfg     # Testbench waveform config
+│── 4_bit_adder.cache/          # Vivado cache files
+│── 4_bit_adder.hw/             # Hardware files
+│── 4_bit_adder.ip_user_files/  # IP-related files
+│── 4_bit_adder.runs/           # Synthesis & implementation runs
 ```
 
 ---
@@ -90,6 +88,6 @@ src/
 
 * *Digital Design* by M. Morris Mano
 * *Fundamentals of Logic Design* by Charles H. Roth
-* [Verilog Full Adder Example](https://en.wikipedia.org/wiki/Adder_%28electronics%29)
+* [Xilinx Vivado Documentation](https://docs.xilinx.com/)
 
 ---
